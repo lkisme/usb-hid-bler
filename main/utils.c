@@ -1,7 +1,16 @@
+/*
+ * @Author: error: git config user.name && git config user.email & please set dead value or install git
+ * @Date: 2023-01-13 10:18:12
+ * @LastEditors: error: git config user.name && git config user.email & please set dead value or install git
+ * @LastEditTime: 2023-01-15 17:05:43
+ * @FilePath: /usb-hid-bler/main/utils.c
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "esp_random.h"
+// #include "esp_random.h"
+// #include <esp_random.h>
 
 void print_hex_dump(const char *name,uint8_t *buffer,int len)
 {
@@ -18,17 +27,17 @@ void print_hex_dump(const char *name,uint8_t *buffer,int len)
 }
 
 static void random_id(char *id, size_t length){
-    for(int i=0;i<length;i++){
-        uint32_t rand = esp_random();
-        if(rand % 4 == 0){
-            rand = rand >> 2;
-            id[i] = '0' + rand % 10;
-        }else{
-            rand = rand >> 2;
-            id[i] = 'a' + rand % 26;
-        }
-    }
-    id[length] = '\0';
+    // for(int i=0;i<length;i++){
+    //     uint32_t rand = esp_random();
+    //     if(rand % 4 == 0){
+    //         rand = rand >> 2;
+    //         id[i] = '0' + rand % 10;
+    //     }else{
+    //         rand = rand >> 2;
+    //         id[i] = 'a' + rand % 26;
+    //     }
+    // }
+    // id[length] = '\0';
     
 }
 

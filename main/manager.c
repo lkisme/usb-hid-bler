@@ -151,9 +151,9 @@ response_t *restart(request_t *request_in){
         return make_fail_response(request_in->session, "参数格式错误");
     }
     uint8_t download_mode = request_in->data[0] == '1';
-    if(download_mode){
-        *((uint32_t *)RTC_CNTL_OPTION1_REG) = 1;
-    }
+    // if(download_mode){
+    //     *((uint32_t *)RTC_CNTL_OPTION1_REG) = 1;
+    // }
     esp_restart();
 }
 

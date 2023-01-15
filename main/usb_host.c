@@ -1630,13 +1630,13 @@ void initStates(int DP0,int DM0,int DP1,int DM1,int DP2,int DM2,int DP3,int DM3)
 			current->counterNAck = 0;
 			current->counterAck = 0;
 			current->epCount = 0;
-			esp_rom_gpio_pad_select_gpio(current->DP);
+			gpio_pad_select_gpio(current->DP);
 			gpio_set_direction(current->DP, GPIO_MODE_OUTPUT);
 			gpio_set_level(current->DP, 0);
 			gpio_set_direction(current->DP, GPIO_MODE_INPUT);
 			gpio_pulldown_en(current->DP);
 			
-			esp_rom_gpio_pad_select_gpio(current->DM);
+			gpio_pad_select_gpio(current->DM);
 			gpio_set_direction(current->DM, GPIO_MODE_OUTPUT);
 			gpio_set_level(current->DM, 0);
 			gpio_set_direction(current->DM, GPIO_MODE_INPUT);

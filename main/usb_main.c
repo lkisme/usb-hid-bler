@@ -115,6 +115,7 @@ void usbMess(uint8_t src,uint8_t len,uint8_t *data)
 }
 
 void on_device_in(sUsbContStruct *usb){
+    printf("on_device_in\n");
     xQueueSendFromISR(new_device_Que, &usb, 0);
 }
 
@@ -122,6 +123,7 @@ void on_device_in(sUsbContStruct *usb){
 void handle_new_device(void *vparam){
     sUsbContStruct *usb;
     while (1){
+    // printf("handle_new_device\n");
         if(xQueueReceive(new_device_Que, &usb, 500 / portTICK_PERIOD_MS)){
             printf("new device %4x:%4x on port %d,%d hid report maps detected\n",usb->desc.idVendor, usb->desc.idProduct, usb->selfNum, usb->hid_report_desc_count);
             
@@ -197,7 +199,7 @@ void usb_recv(void *param)
             install_status_t *status = &install_statuses[usbid][hidid];
 
             uint8_t *msg_data = msg.data;
-            const bool debug_print = false;
+            const bool debug_print = true;
             if(debug_print){
                 printf("msg from usb%d/hid%d", usbid, hidid);
                 print_hex_dump(" ", msg_data, length);

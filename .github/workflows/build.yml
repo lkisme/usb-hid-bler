@@ -21,13 +21,14 @@ jobs:
         submodules: recursive
         path: esp-idf
     - name: Set up IDF tools
-      run: bash ${GITHUB_WORKSPACE}/esp-idf/install.sh esp32c3
+      run: bash ${GITHUB_WORKSPACE}/esp-idf/install.sh esp32
         
     - name: Checkout repo
       uses: actions/checkout@v2
       with:
         submodules: 'recursive'
         path: hid-bler
+        ref: esp32
     - name: Modify ble_hidd.c
       run:  cp ${GITHUB_WORKSPACE}/hid-bler/.github/ble_hidd.c.replace ${GITHUB_WORKSPACE}/esp-idf/components/esp_hid/src/ble_hidd.c
     - name: run build

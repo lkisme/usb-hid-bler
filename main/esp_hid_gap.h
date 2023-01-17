@@ -12,7 +12,17 @@
 #define HIDD_BT_MODE 0x02
 #define HIDD_BTDM_MODE 0x03
 
+#if CONFIG_BT_HID_DEVICE_ENABLED
+#if CONFIG_BT_BLE_ENABLED
+#define HID_DEV_MODE HIDD_BTDM_MODE
+#else
+#define HID_DEV_MODE HIDD_BT_MODE
+#endif
+#elif CONFIG_BT_BLE_ENABLED
 #define HID_DEV_MODE HIDD_BLE_MODE
+#else
+#define HID_DEV_MODE HIDD_IDLE_MODE
+#endif
 
 #include "esp_err.h"
 #include "esp_log.h"

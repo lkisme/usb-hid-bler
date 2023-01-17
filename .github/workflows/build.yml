@@ -31,6 +31,8 @@ jobs:
         ref: esp32
     - name: Modify ble_hidd.c
       run:  cp ${GITHUB_WORKSPACE}/hid-bler/.github/ble_hidd.c.replace ${GITHUB_WORKSPACE}/esp-idf/components/esp_hid/src/ble_hidd.c
+    - name: Modify bt_hidd.c
+      run:  cp ${GITHUB_WORKSPACE}/hid-bler/.github/bt_hidd.c.replace ${GITHUB_WORKSPACE}/esp-idf/components/esp_hid/src/bt_hidd.c
     - name: run build
       run: |
         cd ${GITHUB_WORKSPACE}/hid-bler
@@ -43,5 +45,6 @@ jobs:
         path: |
           /home/runner/work/usb-hid-bler/usb-hid-bler/hid-bler/build/bootloader/bootloader.bin
           /home/runner/work/usb-hid-bler/usb-hid-bler/hid-bler/build/esp_hid_device.bin
+          /home/runner/work/usb-hid-bler/usb-hid-bler/hid-bler/build/esp_hid_device.elf
           /home/runner/work/usb-hid-bler/usb-hid-bler/hid-bler/build/partition_table/partition-table.bin
 
